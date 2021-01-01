@@ -1,5 +1,5 @@
 """
-Definition of geometries like spheres, prisms, polygons, etc.
+Defining geometries like spheres, prisms, polygons, etc.
 
 """
 
@@ -45,20 +45,65 @@ class Sphere(GeometricElement):
     """
     Define a sphere
 
-    Parameters :
+    Parameters
+    ------------
 
-    * x,y,z - float
-    Cartesian coordinate of the center
+    * center: tuple - Cartesian coordinate of the center
 
-    * radius - float
-    Radius of the sphere
+    * radius: float - Radius of the sphere
 
     """
 
-    def __init__(self,x,y,z,radius,props=None):
+    def __init__(self,center,radius,props=None):
         super().__init__(props)
+        self.center = tuple(x,y,z)
         self.x = float(x)
         self.y = float(y)
         self.z = float(z)
         self.radius = float(radius)
-        self.center = np.array([x,y,z])
+
+class RecPrism(GeometricElement):
+    """
+    Define a rectangular prism
+
+    Parameters
+    ------------
+
+    * bounds: tuple - Horizontal bounds of the prism
+
+    * top: float - Position of the top of the prism
+
+    * bottom: float - Position of the bottom of the prism
+
+    """
+    def __int__(self,bounds,top,bottom,props=None):
+        super().__init__(props)
+        self.bounds = tuple(westing,easting,southing,northing)
+        self.westing = float(westing)
+        self.easting = float(easting)
+        self.southing = float(southing)
+        self.top = float(top)
+        self.bottom = float(bottom)
+
+class PolyPrism(GeometricElement):
+    """
+    Define a polygonal prism
+
+    Parameters
+    -----------
+
+    * coordinates_ns : tuple - N-S vertices of the polygonal prisms
+
+    * coordinates_ew : tuple - E-W vertices of the polygonal prisms
+
+    * top: float - Position of the top of the prism
+
+    * bottom: float - Position of the bottom of the prism
+
+    """
+    def __init__(self,coordinates_ns,coordinates_ew,top,bottom,props=None):
+    super().__init__(props)
+    self.coordinates_ns = tuple(coordinates_ns)
+    self.coordinates_ew = tuple(coordinates_ew)
+    self.top = float(top)
+    self.bottom = float(bottom)
